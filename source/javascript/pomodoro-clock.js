@@ -26,7 +26,7 @@ function timerSessionFunction() {
 
     // Format session duration from seconds to MM:SS.
     var mmss = formatMinutesCountdown(numSecondsSession);
-    console.log(numSecondsSession,mmss);
+
     // Clear timer when it reaches 0.
     if (numSecondsSession <= 0) {
 

@@ -1,45 +1,79 @@
+////////////////////////////////////////////////////////////////////////////////
+// Colours
+////////////////////////////////////////////////////////////////////////////////
+
 $bg-color: #333333; //DA4453
-$font-color: #FFFFFF;
 $clock-font-size:2em;
+$font-color: white;
 
 body {
   background-color: $bg-color;
-  color: $font-color;
-  font-family: Helvetica;
+  color: #FFFFFF;
+  font-family: 'Oswald', sans-serif;
   font-size: 100%;
+}
+
+// Disable text selection/highlighting.
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
 
 // Centre in the middle of container (vertical and horizotal).
 .middle {
-
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.hidden {
-  visibility: hidden;
-}
+// Hide an element.
+.hidden { visibility: hidden; };
 
 #app-container {
   position: absolute;
   width: 100%;
 
+  // Controls container.
   .controls {
-    margin-bottom: 25px;
+
     text-align: center;
-
     font-size: 2em;
+    margin-bottom: 0px;
 
-    .duration, .break {
+    // Session controls.
+    .duration {
       display: inline-block;
-      width: 15%;
+      margin-right: 100px;
+    }
 
-      button { font-size: 1em; };
+    // Break controls
+    .break {
+      display: inline-block;
+      margin-left: 100px;
+    }
+
+    // Left/Right buttons.
+    .minus, .plus {
+      padding-left: 25px;
+      padding-right: 25px;
+
+      cursor: hand;
     }
   }
 
+  // Clock container.
   .clock {
+
+    // Cursor.
+    cursor: hand;
+
+    // Font size
+    font-size: 3em;
 
     // Size
     position: relative;
@@ -59,17 +93,15 @@ body {
     border: solid 20px $font-color;
     border-radius: 100%;
 
-
-    .display, .mode {
-
-      // Font size.
-      font-size: $clock-font-size;
-    }
-
   }
 }
 
-
 .container-clockdisplay {
   position: absolute;
+}
+
+#instructions {
+  margin-top: 15px;
+  font-size: 2em;
+  text-align: center;
 }

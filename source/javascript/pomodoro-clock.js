@@ -135,11 +135,14 @@ function plusMinusControls() {
     // Find the parent, and access its child .value button.
     var btnValue = $(this).parent().children(".value");
 
-    // Get the parent div node.
+    // Get the container div node.
     //
-    // The class should either be break or duration.
-    var parentId = $(this).parent("div").attr("class");
-
+    // The class should either be parent-duration or parent-break.
+    //
+    // Split the id by - and take last element.
+    var parentId = $(this).parent("div").attr("id");
+    parentId = parentId.split("-").slice(-1)[0];
+    
     // Get the current value;
     var currentValue = Number(btnValue.text());
 
@@ -211,7 +214,7 @@ $(document).ready(function() {
   active = false;
 
   // Number of minutes for session and break
-  numSecondsBreak = 60;
+  numSecondsBreak = 60*30;
   numSecondsSession = 60;
 
   // Time stage: session, or break.
@@ -235,7 +238,10 @@ $(document).ready(function() {
         active = false;
 
         // Change clock background color.
-        $(".clock").css("background", "transparent");
+        $(".clock").css({
+          "background-color": "transparent",
+          "border-color": "white"
+        });
 
         // Clear all timers.
         clearInterval(timerSession);
@@ -250,7 +256,10 @@ $(document).ready(function() {
         active = true;
 
         // Change clock background color.
-        $(".clock").css("background-color", "#ED5565");
+        $(".clock").css({
+          "border-color": "#E44D26",
+          "background-color": "#F16529"
+        });
 
         // Activate the timer.
         launchTimer();

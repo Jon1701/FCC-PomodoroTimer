@@ -4,12 +4,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Application Stylesheet -->
     <link rel="stylesheet" href="stylesheets/stylesheet.css">
 
     <!-- jQuery -->
     <script src="components/jquery/jquery.js"></script>
 
-    <!-- Script -->
+    <!-- Application Script -->
     <script type="text/javascript" src="javascript/pomodoro-clock.js"></script>
 
   </head>
@@ -17,60 +18,53 @@
   <body>
 
     <!-- Start Main Container -->
-    <div class="container">
+    <div id="app-container" class="middle">
 
-      <!-- Start Title Header -->
-      <div id="header">
-        <h1>Pomodoro Timer</h1>
-      </div>
-      <!-- End Title Header -->
+        <!-- Controls -->
+        <div class="controls">
 
-      <!-- Start Session Length and Break controls -->
-      <div id="durationControls">
+          <!-- Session Duration -->
+          <div class="duration">
+            <div class="name">Session</div>
+            <div class="plus">+</div>
+            <div class="value">1</div>
+            <div class="minus">-</div>
+          </div>
 
-        <!-- Start Duration Controls -->
-        <div id="controlBreakDuration">
-          <div>Break</div>
-          <button class="minus">&minus;</button>
-          <button class="value">1</button>
-          <button class="plus">&plus;</button>
+          <!-- Break Duration -->
+          <div class="break">
+            <div class="name">Break</div>
+            <div class="plus">+</div>
+            <div class="value">1</div>
+            <div class="minus">-</div>
+          </div>
+
+          <!-- Clock -->
+          <div class="clock">
+
+            <!-- Display Session Time -->
+            <div id="display-session" class="container-clockdisplay middle">
+              <div class="mode">
+                Session
+              </div>
+              <div class="display">
+                1:00
+              </div>
+            </div>
+
+            <!-- Display Break Time -->
+            <div id="display-break" class="container-clockdisplay middle hidden">
+              <div class="mode">
+                Break
+              </div>
+              <div class="display">
+                1:00
+              </div>
+            </div>
+
+          </div>
+
         </div>
-        <!-- End Duration Controls -->
-
-        <!-- Start Session Controls -->
-        <div id="controlSessionDuration">
-          <div>Session</div>
-          <button class="minus">&minus;</button>
-          <button class="value">1</button>
-          <button class="plus">&plus;</button>
-        </div>
-        <!-- End Session Controls -->
-
-      </div>
-      <!-- End Session Length and Break controls -->
-
-      <!-- Start clearfix -->
-      <div class="clearfix"></div>
-      <!-- End clearfix -->
-
-      <!-- Start Clock -->
-      <div id="clock">
-        <div id="clockLabelSession">
-          <div class="clockDescription">Session</div>
-          <div class="clockTime">1:00</div>
-        </div>
-
-        <div id="clockLabelBreak" class="hidden">
-          <div class="clockTime">1:00</div>
-          <div class="clockDescription">Break</div>
-        </div>
-      </div>
-      <!--- End Clock-->
-
-      <!-- Instructions -->
-      <div id="instructions">
-        Click the box above to start/stop the timer.
-      </div>
 
     </div>
     <!-- End Main Container -->

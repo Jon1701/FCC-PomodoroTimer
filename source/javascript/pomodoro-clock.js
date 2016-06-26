@@ -26,7 +26,7 @@ function timerSessionFunction() {
 
     // Format session duration from seconds to MM:SS.
     var mmss = formatMinutesCountdown(numSecondsSession);
-    //console.log(mmss);
+    console.log(numSecondsSession,mmss);
     // Clear timer when it reaches 0.
     if (numSecondsSession <= 0) {
 
@@ -35,7 +35,7 @@ function timerSessionFunction() {
       timerSession = null;
 
       // Reset numSecondsSession.
-      numSecondsSession = parseInt($(".duration > .value").text()) * 60;
+      numSecondsSession = parseInt($(".duration > .widgets > .value").text()) * 60;
 
       // Update label on clock.
       $("#display-session > .display").eq(0).text(formatMinutesCountdown(numSecondsSession));
@@ -80,7 +80,7 @@ function timerBreakFunction() {
       timerBreak = null;
 
       // Reset numSecondsBreak.
-      numSecondsBreak = parseInt($(".break > .value").text()) * 60;
+      numSecondsBreak = parseInt($(".break > .widgets > .value").text()) * 60;
 
       // Update label on clock.
       $("#display-break > .display").text(formatMinutesCountdown(numSecondsSession));
@@ -142,7 +142,7 @@ function plusMinusControls() {
     // Split the id by - and take last element.
     var parentId = $(this).parent("div").attr("id");
     parentId = parentId.split("-").slice(-1)[0];
-    
+
     // Get the current value;
     var currentValue = Number(btnValue.text());
 

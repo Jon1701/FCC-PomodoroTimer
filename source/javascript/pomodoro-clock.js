@@ -19,7 +19,6 @@ function launchTimer() {
 
 }
 
-
 function timerSessionFunction() {
 
     // Decrease session duration.
@@ -27,7 +26,7 @@ function timerSessionFunction() {
 
     // Format session duration from seconds to MM:SS.
     var mmss = formatMinutesCountdown(numSecondsSession);
-
+    //console.log(mmss);
     // Clear timer when it reaches 0.
     if (numSecondsSession <= 0) {
 
@@ -36,19 +35,21 @@ function timerSessionFunction() {
       timerSession = null;
 
       // Reset numSecondsSession.
-      numSecondsSession = parseInt($("#controlSessionDuration > .value").text()) * 60;
+      numSecondsSession = parseInt($(".duration > .value").text()) * 60;
 
       // Update label on clock.
-      $("#clockLabelSession > .clockTime").text(formatMinutesCountdown(numSecondsSession));
+      $("#display-session > .display").eq(0).text(formatMinutesCountdown(numSecondsSession));
 
       // Set timer stage to break.
       currentTimerStage = "break";
 
       // Hide session label on clock.
-      $("#clockLabelSession").addClass("hidden");
+      //$("#clockLabelSession").addClass("hidden");
+      $("#display-session").addClass("hidden");
 
       // Show break label on clock.
-      $("#clockLabelBreak").removeClass("hidden");
+      //$("#clockLabelBreak").removeClass("hidden");
+      $("#display-break").removeClass("hidden");
 
       // Start break timer.
       // Run every 1000ms = 1s.
@@ -59,7 +60,7 @@ function timerSessionFunction() {
     }
 
     // Show duration in MM:SS in the clock label.
-    $("#clockLabelSession > .clockTime").text(mmss);
+    $("#display-session > .display").text(mmss);
 
 }
 
@@ -79,26 +80,28 @@ function timerBreakFunction() {
       timerBreak = null;
 
       // Reset numSecondsBreak.
-      numSecondsBreak = parseInt($("#controlBreakDuration > .value").text()) * 60;
+      numSecondsBreak = parseInt($(".break > .value").text()) * 60;
 
       // Update label on clock.
-      $("#clockLabelBreak > .clockTime").text(formatMinutesCountdown(numSecondsSession));
+      $("#display-break > .display").text(formatMinutesCountdown(numSecondsSession));
 
       // Set timer stage to session.
       currentTimerStage = "session";
 
-      // Hide session label on clock.
-      $("#clockLabelBreak").addClass("hidden");
+      // Hide break label on clock.
+      //$("#clockLabelBreak").addClass("hidden");
+      $("#display-break").addClass("hidden");
 
       // Show session label on clock.
-      $("#clockLabelSession").removeClass("hidden");
+      //$("#clockLabelSession").removeClass("hidden");
+      $("#display-session").removeClass("hidden");
 
       // Return to prevent updating clock label.
       return launchTimer();
     }
 
     // Show duration in MM:SS in the clock label.
-    $("#clockLabelBreak > .clockTime").text(mmss);
+    $("#display-break > .display").text(mmss);
 
 }
 
@@ -134,8 +137,8 @@ function plusMinusControls() {
 
     // Get the parent div node.
     //
-    // The id should either be controlBreakDuration or controlSessionDuration.
-    var parentId = $(this).parent("div").attr("id");
+    // The class should either be break or duration.
+    var parentId = $(this).parent("div").attr("class");
 
     // Get the current value;
     var currentValue = Number(btnValue.text());
@@ -150,13 +153,13 @@ function plusMinusControls() {
         btnValue.text(currentValue-1);
 
         // Decrement variables by 1.
-        if (parentId === "controlBreakDuration") {
+        if (parentId === "break") {
 
           // Decrease break duration.
           numSecondsBreak = (currentValue - 1)*60;
 
           // Modify clock label.
-          $("#clockLabelBreak > .clockTime").text(formatMinutesCountdown(numSecondsBreak));
+          $("#display-break > .display").text(formatMinutesCountdown(numSecondsBreak));
 
         } else {
 
@@ -164,7 +167,7 @@ function plusMinusControls() {
           numSecondsSession = (currentValue - 1)*60;
 
           // Modify clock label.
-          $("#clockLabelSession > .clockTime").text(formatMinutesCountdown(numSecondsSession));
+          $("#display-session > .display").text(formatMinutesCountdown(numSecondsSession));
 
         }
 
@@ -181,13 +184,13 @@ function plusMinusControls() {
         btnValue.text(currentValue+1);
 
         // Increment variables by 1.
-        if (parentId === "controlBreakDuration") {
+        if (parentId === "break") {
 
           // Increase break duration.
           numSecondsBreak = (currentValue + 1)*60;
 
           // Modify clock label.
-          $("#clockLabelBreak > .clockTime").text(formatMinutesCountdown(numSecondsBreak));
+          $("#display-break > .display").text(formatMinutesCountdown(numSecondsBreak));
 
         } else {
 
@@ -195,7 +198,7 @@ function plusMinusControls() {
           numSecondsSession = (currentValue + 1)*60;
 
           // Modify clock label.
-          $("#clockLabelSession > .clockTime").text(formatMinutesCountdown(numSecondsSession));
+          $("#display-session > .display").text(formatMinutesCountdown(numSecondsSession));
 
         }
     }
@@ -218,16 +221,12 @@ $(document).ready(function() {
   timerBreak = null;
   timerSession = null;
 
-
-
-
-
   // Increments/Decrements the .value button text by 1 when the
   // .minus or .plus buttons are pressed.
   $(".minus, .plus").on("click", plusMinusControls);
 
 
-  $("#clock").on("click", function() {
+  $(".clock").on("click", function() {
 
       // Toggle active variable.
       if (active === true) {
@@ -236,7 +235,7 @@ $(document).ready(function() {
         active = false;
 
         // Change clock background color.
-        $("#clock").css("background", "transparent");
+        $(".clock").css("background", "transparent");
 
         // Clear all timers.
         clearInterval(timerSession);
@@ -251,14 +250,10 @@ $(document).ready(function() {
         active = true;
 
         // Change clock background color.
-        $("#clock").css("background-color", "#ED5565");
+        $(".clock").css("background-color", "#ED5565");
 
         // Activate the timer.
         launchTimer();
-
-
-
-
 
       }
   })

@@ -15,12 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jon1701/PomodoroClock.git"
+    "url": "git+https://github.com/Jon1701/PumpkindoroTimer.git"
   },
   "author": "Jon1701",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Jon1701/PomodoroClock/issues"
+    "url": "https://github.com/Jon1701/PumpkindoroTimer/issues"
   },
-  "homepage": "https://github.com/Jon1701/PomodoroClock#readme"
+  "homepage": "https://github.com/Jon1701/PumpkindoroTimer#readme"
 }

@@ -2,9 +2,13 @@
 // Colours
 ////////////////////////////////////////////////////////////////////////////////
 
-$bg-color: #333333; //DA4453
+$bg-color: #333333;
 $clock-font-size:2em;
 $font-color: white;
+
+////////////////////////////////////////////////////////////////////////////////
+// Body
+////////////////////////////////////////////////////////////////////////////////
 
 body {
   background-color: $bg-color;
@@ -14,41 +18,21 @@ body {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Font paths
-////////////////////////////////////////////////////////////////////////////////
-$font-path: "../fonts/";
-
-////////////////////////////////////////////////////////////////////////////////
 // Fonts
 ////////////////////////////////////////////////////////////////////////////////
 
 // Oswald
 @font-face {
   font-family: "Oswald";
-  src: url($font-path + "Oswald/Oswald-Regular.ttf")
+  src: url("../fonts/Oswald/Oswald-Regular.ttf")
 }
 
-// Disable text selection/highlighting.
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Chrome/Safari/Opera */
-  -khtml-user-select: none;    /* Konqueror */
-  -moz-user-select: none;      /* Firefox */
-  -ms-user-select: none;       /* Internet Explorer/Edge */
-  user-select: none;           /* Non-prefixed version, currently
-                                  not supported by any browser */
-}
 
-// Centre in the middle of container (vertical and horizotal).
-.middle {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+////////////////////////////////////////////////////////////////////////////////
+// Main styles
+////////////////////////////////////////////////////////////////////////////////
 
-// Hide an element.
-.hidden { visibility: hidden; };
-
+// Application container.
 #app-container {
   position: absolute;
   width: 100%;
@@ -76,7 +60,6 @@ $font-path: "../fonts/";
     .minus, .plus {
       padding-left: 25px;
       padding-right: 25px;
-
       cursor: hand;
     }
   }
@@ -120,3 +103,28 @@ $font-path: "../fonts/";
   font-size: 2em;
   text-align: center;
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// Special styles
+////////////////////////////////////////////////////////////////////////////////
+
+// Disable text selection/highlighting.
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+// Centre in the middle of container (vertical and horizotal).
+.middle {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Hide an element.
+.hidden { visibility: hidden; };

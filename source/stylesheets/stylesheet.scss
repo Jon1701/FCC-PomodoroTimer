@@ -28,31 +28,48 @@ body {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// Responsive breakpoints.
+////////////////////////////////////////////////////////////////////////////////
+@import "_responsive";
+
+////////////////////////////////////////////////////////////////////////////////
 // Main styles
 ////////////////////////////////////////////////////////////////////////////////
 
 // Application container.
 #app-container {
   position: absolute;
-  width: 100%;
+  max-width: 100vw;
+
+  .clearfix {
+    clear: both;
+  }
 
   // Controls container.
   .controls {
 
     text-align: center;
-    font-size: 2em;
+    //font-size: 1em;
+    margin: 0;
     margin-bottom: 0px;
 
     // Session controls.
     .duration {
       display: inline-block;
-      margin-right: 100px;
+      //margin-right: 100px;
+      float: left;
+      padding: 0;
+      margin: 0;
+
     }
 
     // Break controls
     .break {
       display: inline-block;
-      margin-left: 100px;
+      float: right;
+      padding: 0;
+      margin: 0;
+
     }
 
     // Left/Right buttons.
@@ -70,12 +87,12 @@ body {
     cursor: hand;
 
     // Font size
-    font-size: 3em;
+    //font-size: 1em;
 
     // Size
     position: relative;
-    width:  550px;
-    height: 550px;
+    width:  250px;
+    height: 250px;
 
     // Background
     background-color: $bg-color;
@@ -97,9 +114,9 @@ body {
   position: absolute;
 }
 
-#instructions {
+.instructions {
   margin-top: 15px;
-  font-size: 2em;
+  //font-size: 1em;
   text-align: center;
 }
 

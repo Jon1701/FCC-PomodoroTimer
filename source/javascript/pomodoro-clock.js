@@ -211,9 +211,6 @@ function plusMinusControls() {
 
 $(document).ready(function() {
 
-  // Control arrow font size;
-  //$(".minus")
-
   // Current state of the clock.
   active = false;
 
@@ -269,4 +266,32 @@ $(document).ready(function() {
 
       }
   })
+
+  // Menu controls.
+  $(".btn-slidemenu").on("click", function() {
+
+    var triangleUp = "&#9652;";
+    var triangleDown = "&#9662;";
+
+    // Get the id of the control container.
+    //
+    // This is either #parent-duration or #parent-break.
+    var controlId = "#" + $(this).siblings(".container-control").attr("id");
+
+    // Toggle the triangle symbol.
+    if ($(controlId).hasClass("hidden")) {
+
+      // Show menu.
+      $(this).children(".triangle").html(triangleUp);
+      $(controlId).removeClass("hidden");
+
+    } else {
+
+      // Hide menu.
+      $(this).children(".triangle").html(triangleDown);
+      $(controlId).addClass("hidden");
+    };
+
+  });
+
 });
